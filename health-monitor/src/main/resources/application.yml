@@ -1,0 +1,26 @@
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/health_monitor?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root  # 替换为你的实际用户名
+    password: root  # 替换为你的实际密码
+  # JPA配置（关键：修改方言 + 适配Hibernate 7.x）
+  jpa:
+    hibernate:
+      ddl-auto: update  # 自动创建/更新表结构
+    show-sql: true  # 控制台打印SQL
+    properties:
+      hibernate:
+        format_sql: true  # 格式化SQL输出
+        # 核心修复：替换为Hibernate 7.x支持的方言
+        dialect: org.hibernate.dialect.MySQLDialect  # 通用MySQL方言（兼容5.7/8.x）
+        # 如果你的MySQL是8.x版本，也可以用：org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false  # 关闭open-in-view警告
+server:
+  port: 8080  # 端口号
+
+deepseek:
+  api-key: sk-87cc746cf3814a99884f1c551fa8ab1e
+  api-url: https://api.deepseek.com/chat/completions
+  model: deepseek-chat

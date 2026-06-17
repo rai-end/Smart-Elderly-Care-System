@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --bg-primary: #001736;
+  --bg-secondary: #002b6b;
+  --primary-color: #00e5ff;
+  --secondary-color: #7928ca;
+  --text-color: #e0e0e0;
+  --border-glow: 0 0 8px rgba(0, 229, 255, 0.6);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --star-color: #ffffff;
+}
+
+
+body {
+
+  min-height: 100vh;
+  color: var(--text-color);
+  overflow-x: hidden;
+  background: #FFFAF0;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  background-image: 
+    radial-gradient(1px 1px at 25px 5px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 50px 25px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 125px 20px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 75px 125px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 150px 75px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 200px 150px, var(--star-color), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  z-index: -1;
+  animation: twinkle 8s linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+
+.btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--border-glow);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.input:focus {
+  border-color: var(--primary-color);
+  box-shadow: var(--border-glow);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.6s ease-out;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateX(50px) scale(0.95);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-50px) scale(0.95);
+}

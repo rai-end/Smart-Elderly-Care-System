@@ -1,0 +1,5 @@
+### 测试 DeepSeek 智能问答接口
+POST http://localhost:8080/api/chat
+Content-Type: application/x-www-form-urlencoded
+
+question=老人跌倒了应该怎么处理？
